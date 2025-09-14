@@ -7,51 +7,70 @@
   <meta name="description" content="Research and projects portfolio" />
   <style>
     :root{
-      --bg: #ffffff; --fg:#111827; --muted:#6b7280; --card:#fafafa; --accent:#2563eb; --ring:#93c5fd; --line:#e5e7eb;
-      --max: 1050px; --radius: 16px;
+      --bg: #ffffff; --fg:#0f172a; --muted:#64748b; --card:#f8fafc; --accent:#2563eb; --ring:#93c5fd; --line:#e2e8f0;
+      --max: 1100px; --radius: 14px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b0e14; --fg:#e5e7eb; --muted:#9ca3af; --card:#111522; --accent:#60a5fa; --ring:#1d4ed8; --line:#22293a; }
+      :root{ --bg:#0b0e14; --fg:#e5e7eb; --muted:#9ca3af; --card:#121726; --accent:#60a5fa; --ring:#1d4ed8; --line:#233046; }
     }
+
     html{scroll-behavior:smooth}
-    body{margin:0; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--fg);} 
-    .container{max-width:var(--max); margin:auto; padding: 24px 20px 96px;}
-    header{position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px); background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--line);}
-    header .inner{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 20px;}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;}
+    body{margin:0; font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--fg);} 
+
+    /* Header */
+    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(160%) blur(8px); background:color-mix(in oklab, var(--bg) 88%, transparent); border-bottom:1px solid var(--line);} 
+    header .inner{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 20px;} 
+    .brand{font-weight:800; letter-spacing:.2px;}
+    nav{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
     nav a{color:var(--fg); text-decoration:none; padding:8px 10px; border-radius:10px;}
     nav a:hover, nav a:focus{ outline:none; background:var(--card);} 
-    .hero{padding: 28px 0 10px;}
-    .hero h1{margin:0 0 6px; font-size: clamp(28px, 4.2vw, 40px);}
+
+    .container{max-width:var(--max); margin:auto; padding: 28px 20px 96px;}
+
+    /* Hero */
+    .hero{padding: 12px 0 8px;}
+    .hero-grid{display:grid; grid-template-columns: 150px 1fr; gap:22px; align-items:center;}
+    @media (max-width: 720px){ .hero-grid{grid-template-columns: 100px 1fr;} }
+    .avatar{width:100%; max-width:150px; aspect-ratio:1/1; object-fit:cover; border-radius:14px; border:1px solid var(--line); background:#0001}
+    .hero h1{margin:0 0 6px; font-size: clamp(28px, 4.2vw, 40px);} 
     .hero p{margin:0; color:var(--muted)}
-    .section{margin: 28px 0 8px; display:flex; align-items:baseline; justify-content:space-between; gap:16px;}
+
+    /* Sections */
+    .section{margin: 34px 0 12px; display:flex; align-items:baseline; justify-content:space-between; gap:16px;}
     .section h2{font-size: 18px; text-transform:uppercase; letter-spacing: .16em; margin:0; color:var(--muted)}
-    .cards{display:grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap:18px;}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px;}
-    .card h3{margin:.2rem 0; font-size: 20px;}
+
+    /* Research items */
+    .research-list{display:grid; gap:18px;}
+    .research{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;}
+    @media (max-width:900px){ .research{grid-template-columns: 1fr;}}
+    .research h3{margin:.2rem 0; font-size: 20px;}
     .meta{font-size:14px; color:var(--muted)}
     .keywords{display:flex; flex-wrap:wrap; gap:8px;}
-    .tag{font-size:12px; padding:.2rem .5rem; border:1px solid var(--line); border-radius:999px; color:var(--muted);}
-    .lead{margin:.2rem 0 .4rem;}
+    .tag{font-size:12px; padding:.2rem .5rem; border:1px solid var(--line); border-radius:999px; color:var(--muted);} 
+    .lead{margin:.35rem 0 .55rem;}
     .features{margin:.2rem 0 .4rem; padding-left: 1.2rem;}
     .features li{margin:.2rem 0;}
     .features li::marker{content:"★  "; color:var(--accent);}  
     .skills{font-size: 13px; color:var(--muted)}
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:.5rem .75rem; border-radius:10px; text-decoration:none; font-weight:600; border:1px solid var(--line);}
-    .btn.primary{background:var(--accent); border-color:transparent; color:white;}
-    .btn:hover{box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 40%, transparent)}
     .thumb{aspect-ratio: 16/9; width:100%; object-fit:cover; border-radius:12px; border:1px solid var(--line); background:#0001}
 
-    .grid-two{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;}
-    @media (max-width:900px){ .grid-two{grid-template-columns: 1fr;}}
+    /* Cards grid for projects */
+    .cards{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px;}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px;}
+    .card h3{margin:.2rem 0; font-size: 18px;}
 
-    footer{margin-top:48px; border-top:1px solid var(--line);}
-    footer .inner{max-width:var(--max); margin:auto; padding:18px 20px 48px; display:grid; gap:6px;}
+    /* Buttons */
+    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:.5rem .75rem; border-radius:10px; text-decoration:none; font-weight:600; border:1px solid var(--line); color:var(--fg);}
+    .btn.primary{background:var(--accent); border-color:transparent; color:white;}
+    .btn:hover{box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 40%, transparent)}
+
+    /* Footer */
+    footer{margin-top:48px; border-top:1px solid var(--line);} 
+    footer .inner{max-width:var(--max); margin:auto; padding:18px 20px 48px; display:grid; gap:6px;} 
     .muted{color:var(--muted)}
 
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    .note{background:var(--card); border:1px dashed var(--line); border-radius:12px; padding:12px; color:var(--muted);}
   </style>
 </head>
 <body>
@@ -60,125 +79,118 @@
     <div class="inner">
       <div class="brand">Your Name</div>
       <nav aria-label="Primary">
-        <a href="#research">Research</a>
-        <a href="#projects">Selected Projects</a>
+        <a href="#main">Home</a>
         <a href="cv.pdf">CV</a>
         <a href="#contact">Contact</a>
+      </nav>
+      <nav aria-label="Social">
         <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
       </nav>
     </div>
   </header>
 
-  <div id="main" class="container">
+  <main id="main" class="container">
     <section class="hero">
-      <h1>Your Name</h1>
-      <p>Research Interests: HCI & XR · Vision-for-XR · Visualization (edit this one-liner)</p>
+      <div class="hero-grid">
+        <img class="avatar" src="images/headshot.jpg" alt="Headshot" />
+        <div>
+          <h1>Your Name</h1>
+          <p>Short one‑liner about your focus (we will edit content later).</p>
+        </div>
+      </div>
     </section>
 
-    <!-- RESEARCH -->
     <div class="section" id="research">
       <h2>RESEARCH</h2>
-      <div class="note">Duplicate a <strong>card</strong> below for each research project. Replace placeholders in ALL-CAPS. Remove this note when done.</div>
     </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>TITLE OF YOUR RESEARCH PROJECT</h3>
-        <div class="meta">Keywords:
-          <span class="keywords">
-            <span class="tag">keyword-1</span>
-            <span class="tag">keyword-2</span>
-            <span class="tag">keyword-3</span>
-          </span>
+    <div class="research-list">
+      <article class="research">
+        <div>
+          <h3>TITLE OF YOUR RESEARCH PROJECT</h3>
+          <div class="meta">Keywords:
+            <span class="keywords">
+              <span class="tag">keyword-1</span>
+              <span class="tag">keyword-2</span>
+              <span class="tag">keyword-3</span>
+            </span>
+          </div>
+          <p class="lead">1–3 sentence abstract placeholder describing the problem, why it matters, the approach, and a headline result. We will replace with your real text later.</p>
+          <ul class="features">
+            <li>Feature/Contribution 1 placeholder.</li>
+            <li>Feature/Contribution 2 placeholder.</li>
+            <li>Feature/Contribution 3 placeholder.</li>
+          </ul>
+          <p class="skills"><strong>Skills:</strong> Python · NumPy · PyTorch · C++ · CUDA</p>
+          <div class="actions">
+            <a class="btn primary" href="#">View Paper</a>
+            <a class="btn" href="#">Code</a>
+            <a class="btn" href="#">Demo</a>
+            <a class="btn" href="#">Dataset</a>
+          </div>
         </div>
-        <p class="lead">1–3 sentence abstract: WHAT problem did you tackle, WHY it matters, HOW you approached it, and your headline result. Keep it crisp.
-        </p>
-        <ul class="features">
-          <li>Feature/Contribution 1 (e.g., "Designed a beam search variant with visitation metric; reproduced all known optima up to n=100.")</li>
-          <li>Feature/Contribution 2 (e.g., "Explored Moser lattice constructions with rotation/translation/reflection rules.")</li>
-          <li>Feature/Contribution 3 (e.g., "Parallel CPU/GPU implementations for 12× speedup over baseline.")</li>
-        </ul>
-        <p class="skills"><strong>Skills:</strong> Python · NumPy · PyTorch · C++ · CUDA · Unity/Unreal · Statistics (edit to match)</p>
-        <img class="thumb" src="img/placeholder-1.jpg" alt="Screenshot or figure for project (optional)">
-        <div class="actions">
-          <a class="btn primary" href="#">View Paper</a>
-          <a class="btn" href="#">Code</a>
-          <a class="btn" href="#">Demo</a>
-          <a class="btn" href="#">Dataset</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>SECOND RESEARCH PROJECT TITLE</h3>
-        <div class="meta">Subjects:
-          <span class="keywords">
-            <span class="tag">subject-1</span>
-            <span class="tag">subject-2</span>
-          </span>
-        </div>
-        <p class="lead">Short abstract describing your theoretical/empirical focus (e.g., eigenmaps vs. orthogonal polynomials; list spaces S², [−1,1]², etc.).</p>
-        <ul class="features">
-          <li>What you analyzed/built (e.g., Laplacian operators on intervals/surfaces; sampling distributions).</li>
-          <li>Visualization tooling or evaluations (NumPy/Matplotlib; perceptual/metric analyses).</li>
-          <li>Key takeaway/insight or comparison (e.g., links to families of orthogonal polynomials).</li>
-        </ul>
-        <p class="skills"><strong>Skills:</strong> Python · MATLAB · NumPy · Matplotlib</p>
-        <div class="actions">
-          <a class="btn" href="#">View Paper</a>
-          <a class="btn" href="#">Demo / Plots</a>
+        <div>
+          <img class="thumb" src="images/headshot.jpg" alt="Figure placeholder" />
         </div>
       </article>
 
-      <article class="card">
-        <h3>THIRD RESEARCH PROJECT TITLE</h3>
-        <div class="meta">Venue: <em>HRI ’24</em> (or other) · <span class="keywords"><span class="tag">keywords</span><span class="tag">more</span></span></div>
-        <p class="lead">1–2 sentence study summary (e.g., non‑linguistic utterances for robot emotion; end‑user evaluation across arousal/valence).</p>
-        <ul class="features">
-          <li>Implemented system/prototype (robot, device, software) and core algorithm.</li>
-          <li>Designed motions/protocol; ran user study (N, task, metrics).</li>
-          <li>Key result (e.g., emotions X/Y/Z significantly separable; limitations noted).</li>
-        </ul>
-        <p class="skills"><strong>Skills:</strong> Python · C++ · Stats/ANOVA · Signal processing · Visualization</p>
-        <div class="actions">
-          <a class="btn primary" href="#">View Paper</a>
-          <a class="btn" href="#">View Demo</a>
+      <article class="research">
+        <div>
+          <h3>SECOND RESEARCH PROJECT TITLE</h3>
+          <div class="meta">Subjects:
+            <span class="keywords">
+              <span class="tag">subject-1</span>
+              <span class="tag">subject-2</span>
+            </span>
+          </div>
+          <p class="lead">Short abstract placeholder describing your theoretical/empirical focus. We will fill in the specifics together.</p>
+          <ul class="features">
+            <li>What you analyzed/built placeholder.</li>
+            <li>Visualization or evaluation details placeholder.</li>
+            <li>Key takeaway/insight placeholder.</li>
+          </ul>
+          <p class="skills"><strong>Skills:</strong> Python · MATLAB · NumPy · Matplotlib</p>
+          <div class="actions">
+            <a class="btn" href="#">View Paper</a>
+            <a class="btn" href="#">Demo / Plots</a>
+          </div>
+        </div>
+        <div>
+          <img class="thumb" src="images/headshot.jpg" alt="Figure placeholder" />
         </div>
       </article>
     </div>
 
-    <!-- SELECTED PROJECTS -->
     <div class="section" id="projects">
       <h2>SELECTED PROJECTS</h2>
-      <div class="note">Use cards below for non‑research or course projects. Keep one‑paragraph summaries + a single clear link.</div>
     </div>
 
     <div class="cards">
       <article class="card">
         <h3>PROJECT TITLE</h3>
-        <div class="meta">Optional subtitle (e.g., Optimized Disneyland Travel Map)</div>
-        <p class="lead">One‑paragraph summary describing the goal, core method (e.g., integer programming / TSP‑inspired), and outcome (e.g., reduced walking time by 22%).</p>
+        <div class="meta">Optional subtitle</div>
+        <p class="lead">One‑paragraph summary placeholder describing the goal, core method, and outcome.</p>
         <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
       </article>
 
       <article class="card">
         <h3>PROJECT TITLE</h3>
-        <p class="lead">Short description (e.g., hyperbolic‑plane visualizations using Poincaré disk; geodesics/tilings with Hyperbolic Canvas).</p>
+        <p class="lead">Short description placeholder.</p>
         <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
       </article>
 
       <article class="card">
         <h3>PROJECT TITLE</h3>
-        <p class="lead">Short description (e.g., integer factorization algorithms; runtime comparisons of Fermat, Kraitchik‑Fermat, Pollard p−1).</p>
+        <p class="lead">Short description placeholder.</p>
         <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
       </article>
     </div>
 
-    <!-- CONTACT -->
     <div class="section" id="contact">
       <h2>CONTACT</h2>
     </div>
-    <div class="grid-two">
+    <div class="cards">
       <div class="card">
         <h3>Get in touch</h3>
         <p class="lead"><strong>Phone:</strong> (XXX) XXX‑XXXX<br>
@@ -202,7 +214,7 @@
         <div class="muted">Built with a single HTML file. Host on GitHub Pages.</div>
       </div>
     </footer>
-  </div>
+  </main>
 
   <script>
     // Update year automatically
