@@ -210,9 +210,10 @@
         /* 4-up gallery with larger primary image */
         .gallery-4 { margin-top: 16px; }
         .gallery-4 .col-8 { margin-bottom: 12px; }
-        .gallery-4 .col-8 img { max-height: 420px; object-fit: cover; }
+        .gallery-4 .col-8 img { max-height: 360px; object-fit: contain; background:#fff; border:1px solid #e9ecef; padding:6px; border-radius:10px; }
         .gallery-4 .col-4 { margin-bottom: 12px; }
-        .gallery-4 .col-4 img { max-height: 180px; object-fit: cover; }
+        .gallery-4 .col-4 img { max-height: 160px; object-fit: contain; background:#fff; border:1px solid #e9ecef; padding:6px; border-radius:10px; }
+        .poster-vr { max-height: 360px; width:100%; object-fit: contain; background:#fff; border:1px solid #e9ecef; padding:6px; border-radius:10px; }
 
         .image.fit img:hover {
             transform: translateY(-5px);
@@ -415,7 +416,7 @@
                 <ul class="links">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="#hobbies">Hobbies</a></li>
+                    <li><a href="hobbies.html">Hobbies</a></li>
                 </ul>
                                  <!-- Social media icons -->
                  <ul class="icons">
@@ -519,7 +520,7 @@
 
                                                  <div class="row">
                             <div class="col-12">
-                                <a class="image fit"><img src="images/poster2.jpg" loading="lazy" alt="VR turbine array with underwater seabed in Unity" /></a>
+                                <a class="image fit"><img class="poster-vr" src="images/poster2.jpg" loading="lazy" alt="VR turbine array with underwater seabed in Unity" /></a>
                             </div>
                         </div>
 
@@ -596,36 +597,6 @@
                 </article>
 
             </div>
-
-            <!-- Hobbies Section -->
-            <article id="hobbies">
-                <h5>HOBBIES</h5>
-                <p class="lead">Outside of research and projects, I enjoy fingerstyle guitar and photography.</p>
-
-                <!-- Guitar photo -->
-                <div class="row">
-                    <div class="col-6 col-12-small">
-                        <a class="image fit"><img src="Hobby/Guitar.jpg" loading="lazy" alt="Playing fingerstyle guitar" /></a>
-                    </div>
-                    <div class="col-6 col-12-small">
-                        <p>I play fingerstyle guitar, arranging melodies, bass, and percussive hits on a single instrument. It’s my favorite way to unwind and explore musical ideas.</p>
-                    </div>
-                </div>
-
-                <!-- Photography gallery (auto-grid) -->
-                <div class="row" style="margin-top: 12px;">
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo1.jpg" loading="lazy" alt="Photograph 1" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo2.jpg" loading="lazy" alt="Photograph 2" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo3.jpg" loading="lazy" alt="Photograph 3" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo4.jpg" loading="lazy" alt="Photograph 4" /></a></div>
-                </div>
-                <div class="row" style="margin-top: 12px;">
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo5.jpg" loading="lazy" alt="Photograph 5" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo6.jpg" loading="lazy" alt="Photograph 6" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo7.jpg" loading="lazy" alt="Photograph 7" /></a></div>
-                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo8.jpg" loading="lazy" alt="Photograph 8" /></a></div>
-                </div>
-            </article>
 
         <!-- Footer Section -->
         <footer id="footer">
