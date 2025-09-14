@@ -34,29 +34,20 @@
 
         /* Header */
         #header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #111111;
             text-align: center;
-            padding: 80px 0;
+            padding: 64px 0;
             position: relative;
+            border-bottom: 1px solid #e9ecef;
         }
 
-        #header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.1);
-        }
+        #header::before { display:none; }
 
         #header h1 {
-            position: relative;
-            z-index: 1;
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             margin: 0;
         }
 
@@ -103,8 +94,8 @@
 
         .links a:hover,
         .links .active a {
-            color: #667eea;
-            border-bottom-color: #667eea;
+            color: #111;
+            border-bottom-color: #111;
         }
 
         .icons {
@@ -122,7 +113,7 @@
         }
 
         .icons a:hover {
-            color: #667eea;
+            color: #111;
         }
 
         /* Main content */
@@ -217,6 +208,13 @@
             transform: translateY(-5px);
         }
 
+        /* Lightbox */
+        .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999}
+        .lightbox img{max-width:92vw;max-height:92vh;box-shadow:0 10px 30px rgba(0,0,0,.6);border-radius:10px}
+        .lightbox.show{display:flex}
+        .lightbox:focus{outline:none}
+
+
         /* Typography */
         p {
             margin-bottom: 20px;
@@ -249,22 +247,21 @@
 
         .button {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 10px 22px;
+            background: #fff;
+            color: #111;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            border: none;
+            font-size: 0.93rem;
+            transition: all 0.2s ease;
+            border: 1px solid #111;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
 
         .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            background:#111;
+            color:#fff;
         }
 
         /* Footer */
@@ -596,6 +593,8 @@
 
             </div>
 
+        <div id="lb" class="lightbox" tabindex="-1" aria-hidden="true"><img alt="fullscreen image"></div>
+
         <!-- Footer Section -->
         <footer id="footer">
                          <section class="split contact">
@@ -628,6 +627,26 @@
              <ul><li>&copy; Yuyang Wang</li></ul>
          </div>
 
-    </div>
+    <script>
+  // Lightbox: click any .image.fit img to open, click backdrop to close
+  const lb = document.getElementById('lb');
+  const lbImg = lb ? lb.querySelector('img') : null;
+  if (lb && lbImg) {
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('.image.fit img');
+      if (img) {
+        lbImg.src = img.src;
+        lb.classList.add('show');
+      } else if (e.target === lb) {
+        lb.classList.remove('show');
+        lbImg.src = '';
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lb.classList.remove('show');
+    });
+  }
+</script>
+</div>
 </body>
 </html>

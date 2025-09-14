@@ -5,26 +5,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <style>
-        body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:#333;background:#fff}
-        #wrapper{max-width:1200px;margin:0 auto;background:#fff;box-shadow:0 0 50px rgba(0,0,0,.08)}
-        #header{background:linear-gradient(135deg,#667eea 0%, #764ba2 100%);color:#fff;text-align:center;padding:64px 0}
-        #header h1{margin:0;font-size:2.8rem;letter-spacing:.06em}
+        body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;color:#111;background:#fff}
+        #wrapper{max-width:1200px;margin:0 auto;background:#fff;box-shadow:0 0 50px rgba(0,0,0,.06)}
+        #header{background:#fff;color:#111;text-align:center;padding:56px 0;border-bottom:1px solid #e9ecef}
+        #header h1{margin:0;font-size:2.4rem;letter-spacing:.05em}
         #nav{background:#fff;border-bottom:1px solid #e9ecef;position:sticky;top:0;z-index:10}
         .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:center;padding:0 24px}
         .links{display:flex;list-style:none;gap:8px;margin:0;padding:0}
-        .links a{display:block;padding:18px 18px;text-decoration:none;color:#333;border-bottom:3px solid transparent}
-        .links a:hover,.links .active a{color:#667eea;border-bottom-color:#667eea}
+        .links a{display:block;padding:16px 18px;text-decoration:none;color:#111;border-bottom:2px solid transparent}
+        .links a:hover,.links .active a{color:#111;border-bottom-color:#111}
         #main{padding:0 24px 64px;display:flex;flex-direction:column;align-items:center}
+        section{max-width:1000px;width:100%;background:#fff;border:1px solid #e9ecef;border-radius:12px;padding:24px;margin-top:24px;box-shadow:0 10px 24px rgba(0,0,0,.04)}
         .row{display:flex;flex-wrap:wrap;justify-content:center;margin:0 -12px}
         [class*="col-"]{padding:0 12px}
         .col-6{flex:0 0 50%;max-width:50%}
         .col-12{flex:0 0 100%;max-width:100%}
         .col-3{flex:0 0 25%;max-width:25%}
         @media (max-width:768px){.col-6,.col-3{flex:0 0 100%;max-width:100%}}
-        .image.fit img{width:100%;height:auto;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,.08)}
+        .image.fit img{width:100%;height:auto;border-radius:10px;box-shadow:0 5px 16px rgba(0,0,0,.06);transition:transform .25s ease}
+        .image.fit img:hover{transform:translateY(-2px)}
+        /* Taller first image */
+        #main section:first-of-type .image.fit img{height:360px;object-fit:cover}
+        /* Gallery grid visuals with light frame */
+        .gallery .image.fit img{height:220px;object-fit:cover;border-radius:12px;border:1px solid #e9ecef;background:#fff;padding:4px}
         h2{margin:28px 0 10px;text-align:center}
         p{margin:0 0 16px;text-align:center;max-width:800px}
-        footer{background:#1a252f;color:#7f8c8d;text-align:center;padding:16px}
+        footer{background:#fff;color:#666;text-align:center;padding:16px;border-top:1px solid #e9ecef}
     </style>
 </head>
 <body>
@@ -57,14 +63,14 @@
 
         <section>
             <h2>Photo Gallery</h2>
-            <div class="row" style="margin-top:8px">
+            <div class="row gallery" style="margin-top:8px">
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo1.jpg" alt="Photograph 1"></a></div>
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo2.jpg" alt="Photograph 2"></a></div>
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo3.jpg" alt="Photograph 3"></a></div>
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo4.jpg" alt="Photograph 4"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo10.jpg" alt="Photograph 5"></a></div>
+                <div class="col-3"><a class="image fit"><img src="Hobby/Photo10.jpg" alt="Photograph 10"></a></div>
             </div>
-            <div class="row" style="margin-top:8px">
+            <div class="row gallery" style="margin-top:8px">
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo5.jpg" alt="Photograph 5"></a></div>
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo6.jpg" alt="Photograph 6"></a></div>
                 <div class="col-3"><a class="image fit"><img src="Hobby/Photo7.jpg" alt="Photograph 7"></a></div>
