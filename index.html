@@ -206,6 +206,11 @@
             transition: transform 0.3s ease;
         }
 
+        /* 4-up gallery with larger primary image */
+        .gallery-4 { margin-top: 16px; }
+        .gallery-4 .col-8 { margin-bottom: 16px; }
+        .gallery-4 .col-4 { margin-bottom: 16px; }
+
         .image.fit img:hover {
             transform: translateY(-5px);
         }
@@ -407,7 +412,6 @@
                 <ul class="links">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="contact.html">Contact</a></li>
                 </ul>
                                  <!-- Social media icons -->
                  <ul class="icons">
@@ -442,43 +446,57 @@
             <article>
                 <h5>RESEARCH</h5>
 
-                                                  <!-- Research Project 1 -->
-                 <article>
-                     <header>
-                         <h2>Research Project Title 1</h2>
-                         <p>Keywords: placeholder keywords for first project</p>
-                     </header>
-                     <div>
-                         <div>
-                             <p>Research description placeholder - we will update this with your actual research content later. This section will contain the detailed description of your first research project, including methodology, findings, and significance.</p>
-                             
-                             <p><strong>★Features:</strong></p>
-                             <ul>
-                                 <li>Key contribution or finding 1</li>
-                                 <li>Key contribution or finding 2</li>
-                                 <li>Key contribution or finding 3</li>
-                             </ul>
-                             
-                             <p><strong>★Skills:</strong> Skills placeholder</p>
-                         </div>
+                                                                  <!-- Research Project 1 -->
+                <article>
+                    <header>
+                        <h2>Accessible LLM Interaction for Blind and Screen-Reader Users: Biases & Improvements</h2>
+                        <p class="research-meta">Keywords: Accessibility; Blind users; Screen reader; Bias & fairness; HCI evaluation; LLM; Next.js; Edge streaming; Privacy</p>
+                    </header>
+                    <div>
+                        <div>
+                            <p>This project investigates how blind and screen-reader users interact with LLMs, asking: <em>what interaction breakdowns and biases arise, and what design or alignment changes would improve the experience?</em> To enable rigorous study, we built a screen-reader-first chat system (Next.js + Edge streaming) that both <strong>supports accessible interaction</strong> (reliable announcements, predictable focus, keyboard workflows) and <strong>collects structured research data</strong>—user intents, complete transcripts, and <em>sentence-level</em> judgments with consent. The instrumented platform allows fine-grained analysis of dialog quality and bias patterns in non-visual use, informing concrete UI fixes and accessibility-focused alignment signals.</p>
 
-                         <div class="row">
-                             <div class="col-12">
-                                 <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
-                             </div>
-                         </div>
-                     </div>
+                            <p><strong>★Features:</strong></p>
+                            <ul>
+                                <li><strong>Accessible interaction model:</strong> ARIA live regions with deterministic focus across streaming & dialogs; full keyboard workflows (Enter/Space actions, Cmd/Ctrl+Enter newline, Meta/Ctrl+Alt+0 to open annotation); “Annotate last response” quick action with safe targets.</li>
+                                <li><strong>Sentence-level bias/quality annotation:</strong> Segments assistant output into sentences (with <code>Intl.Segmenter</code> fallback) and renders each as a focusable button; captures qualitative judgments, improvement suggestions, and consent; persists rich metadata (<em>chatId, messageIndex, sentenceIndex, length, wordCount</em>) in MongoDB.</li>
+                                <li><strong>Standardized research data collection:</strong> Optional pre-chat intent capture; automatic end-chat feedback after five exchanges; complete timestamped transcripts with SSR-safe serialization to support qualitative coding and quantitative analysis.</li>
+                                <li><strong>Streaming & context control:</strong> Real-time OpenAI Edge streaming; persisted assistant responses post-stream; optional history summarization endpoint to manage token limits during longer sessions.</li>
+                                <li><strong>Privacy & integrity:</strong> Auth0 authentication/middleware, per-request session checks, SSR owner verification with <code>ObjectId</code> validation; explicit consent flag (<code>shareResponse</code>); all writes scoped to the authenticated user.</li>
+                                <li><strong>Study operations:</strong> Protected chat list for participants, intent-aware “New chat” flow, input locking during streaming/dialogs to keep the screen-reader narrative stable during data collection.</li>
+                            </ul>
 
-                     <ul class="actions special">
-                         <li><a href="#" class="button">View Paper</a></li>
-                     </ul>   
-                 </article>
+                            <p class="skills"><strong>Skills:</strong> Next.js (React), Node.js, MongoDB, Auth0, Tailwind CSS; Web Accessibility (WAI-ARIA, focus management, SR workflows); OpenAI Edge streaming; REST APIs; research instrumentation & data modeling.</p>
+                        </div>
+
+                        <div class="row gallery-4">
+                            <div class="col-8 col-12-small">
+                                <a class="image fit"><img src="images/poster1.1.jpg" loading="lazy" alt="Poster main - accessible LLM research" /></a>
+                            </div>
+                            <div class="col-4 col-12-small">
+                                <a class="image fit"><img src="images/poster1.2.jpg" loading="lazy" alt="Poster detail 1" /></a>
+                            </div>
+                            <div class="col-4 col-12-small">
+                                <a class="image fit"><img src="images/poster1.3.jpg" loading="lazy" alt="Poster detail 2" /></a>
+                            </div>
+                            <div class="col-4 col-12-small">
+                                <a class="image fit"><img src="images/poster1.4.jpg" loading="lazy" alt="Poster detail 3" /></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="actions special">
+                        <li><a href="DEMO_LINK" target="_blank" rel="noopener" class="button">Demo</a></li>
+                        <li><a href="CODE_LINK" target="_blank" rel="noopener" class="button">Code</a></li>
+                        <li><a href="DOCS_OR_DIAGRAM" target="_blank" rel="noopener" class="button">Study Overview</a></li>
+                    </ul>
+                </article>
 
                  <!-- Research Project 2 - VR Project -->
                  <article>
                      <header>
                          <h2>Virtual Offshore Wind Turbines: Unity-Based VR Simulation for Mooring Line Design Evaluation</h2>
-                         <p>Keywords: VR; Unity; Offshore wind; Mooring design; Stakeholder engagement; Underwater visualization</p>
+                         
                      </header>
                      <div>
                          <div>
