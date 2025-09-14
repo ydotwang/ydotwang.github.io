@@ -140,6 +140,7 @@
         .col-3 { flex: 0 0 25%; max-width: 25%; }
         .col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
         .col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+        .col-6 { flex: 0 0 50%; max-width: 50%; }
         .col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
         .col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
         .col-9 { flex: 0 0 75%; max-width: 75%; }
@@ -208,8 +209,10 @@
 
         /* 4-up gallery with larger primary image */
         .gallery-4 { margin-top: 16px; }
-        .gallery-4 .col-8 { margin-bottom: 16px; }
-        .gallery-4 .col-4 { margin-bottom: 16px; }
+        .gallery-4 .col-8 { margin-bottom: 12px; }
+        .gallery-4 .col-8 img { max-height: 420px; object-fit: cover; }
+        .gallery-4 .col-4 { margin-bottom: 12px; }
+        .gallery-4 .col-4 img { max-height: 180px; object-fit: cover; }
 
         .image.fit img:hover {
             transform: translateY(-5px);
@@ -412,6 +415,7 @@
                 <ul class="links">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="cv.html">CV</a></li>
+                    <li><a href="#hobbies">Hobbies</a></li>
                 </ul>
                                  <!-- Social media icons -->
                  <ul class="icons">
@@ -471,16 +475,16 @@
 
                         <div class="row gallery-4">
                             <div class="col-8 col-12-small">
-                                <a class="image fit"><img src="images/Poster1.1.png" loading="lazy" alt="accessible LLM research" /></a>
+                                <a class="image fit"><img src="images/Poster1.1.PNG" loading="lazy" alt="accessible LLM research" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/Poster1.2.png" loading="lazy" alt="detail 1" /></a>
+                                <a class="image fit"><img src="images/Poster1.2.PNG" loading="lazy" alt="detail 1" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/Poster1.3.png" loading="lazy" alt="detail 2" /></a>
+                                <a class="image fit"><img src="images/Poster1.3.PNG" loading="lazy" alt="detail 2" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/Poster1.4.png" loading="lazy" alt="detail 3" /></a>
+                                <a class="image fit"><img src="images/Poster1.4.PNG" loading="lazy" alt="detail 3" /></a>
                             </div>
                         </div>
                     </div>
@@ -548,15 +552,16 @@
                     <p class="skills"><strong>Skills:</strong> Next.js (React), TypeScript, Tailwind CSS, FastAPI (Python), OAuth 2.0 PKCE, REST APIs, RapidFuzz, pagination & resilience patterns, cloud deployment (Vercel/Fly.io).</p>
 
                     <div class="row">
-                        <div class="col-12">
-                            <a class="image fit"><img src="images/project1.png" loading="lazy" alt="Netify playlist migration progress UI" /></a>
+                        <div class="col-5 col-12-small">
+                            <a class="image fit"><img src="images/project1.PNG" loading="lazy" alt="Netify playlist migration progress UI" /></a>
+                        </div>
+                        <div class="col-7 col-12-small">
+                            <ul class="actions special">
+                                <li><a href="https://github.com/ydotwang/netify" target="_blank" rel="noopener" class="button">Codebase</a></li>
+                                <li><a href="https://netify-five.vercel.app/" target="_blank" rel="noopener" class="button">Website</a></li>
+                            </ul>
                         </div>
                     </div>
-
-                    <ul class="actions special">
-                        <li><a href="https://github.com/ydotwang/netify" target="_blank" rel="noopener" class="button">Codebase</a></li>
-                        <li><a href="https://netify-five.vercel.app/" target="_blank" rel="noopener" class="button">Website</a></li>
-                    </ul>
                 </article>
 
                 <!-- Project 2: Light RPG Prototype -->
@@ -579,17 +584,48 @@
                     <p class="skills"><strong>Skills:</strong> Unreal Engine 5, gameplay programming & AI logic, level/puzzle design, playtesting & telemetry, Agile collaboration, audio production (GarageBand), demo production.</p>
 
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-5 col-12-small">
                             <a class="image fit"><img src="images/project2.jpg" loading="lazy" alt="Light RPG prototype: enemy patrol and laser-mirror puzzle" /></a>
                         </div>
+                        <div class="col-7 col-12-small">
+                            <ul class="actions special">
+                                <li><a href="https://sites.google.com/view/cs269yuyangwangportfolio" target="_blank" rel="noopener" class="button">Portfolio</a></li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <ul class="actions special">
-                        <li><a href="https://sites.google.com/view/cs269yuyangwangportfolio" target="_blank" rel="noopener" class="button">Portfolio</a></li>
-                    </ul>
                 </article>
 
             </div>
+
+            <!-- Hobbies Section -->
+            <article id="hobbies">
+                <h5>HOBBIES</h5>
+                <p class="lead">Outside of research and projects, I enjoy fingerstyle guitar and photography.</p>
+
+                <!-- Guitar photo -->
+                <div class="row">
+                    <div class="col-6 col-12-small">
+                        <a class="image fit"><img src="Hobby/Guitar.jpg" loading="lazy" alt="Playing fingerstyle guitar" /></a>
+                    </div>
+                    <div class="col-6 col-12-small">
+                        <p>I play fingerstyle guitar, arranging melodies, bass, and percussive hits on a single instrument. It’s my favorite way to unwind and explore musical ideas.</p>
+                    </div>
+                </div>
+
+                <!-- Photography gallery (auto-grid) -->
+                <div class="row" style="margin-top: 12px;">
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo1.jpg" loading="lazy" alt="Photograph 1" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo2.jpg" loading="lazy" alt="Photograph 2" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo3.jpg" loading="lazy" alt="Photograph 3" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo4.jpg" loading="lazy" alt="Photograph 4" /></a></div>
+                </div>
+                <div class="row" style="margin-top: 12px;">
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo5.jpg" loading="lazy" alt="Photograph 5" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo6.jpg" loading="lazy" alt="Photograph 6" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo7.jpg" loading="lazy" alt="Photograph 7" /></a></div>
+                    <div class="col-3 col-12-small"><a class="image fit"><img src="Hobby/Photo8.jpg" loading="lazy" alt="Photograph 8" /></a></div>
+                </div>
+            </article>
 
         <!-- Footer Section -->
         <footer id="footer">
