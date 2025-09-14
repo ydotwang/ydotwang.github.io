@@ -8,11 +8,11 @@
   <style>
     :root{
       --bg:#ffffff; --fg:#111318; --muted:#4b5563; --line:#e5e7eb; --accent:#111318;
-      --top:#4b4f54; --top-line:#30343a; --top-hover:#676c72; --top-text:#f7f7f7;
+      --top:#ffffff; --top-line:#e5e7eb; --top-hover:#f4f6f8; --top-text:#111318;
       --max: 820px; --radius: 14px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0c0f14; --fg:#e6e7eb; --muted:#a2a9b3; --line:#222832; --accent:#e6e7eb; --top:#2d3237; --top-line:#1d2228; --top-hover:#3b4249; --top-text:#f4f6f8; }
+      :root{ --bg:#ffffff; --fg:#111318; --muted:#4b5563; --line:#e5e7eb; --accent:#111318; --top:#ffffff; --top-line:#e5e7eb; --top-hover:#f4f6f8; --top-text:#111318; }
     }
 
     html{scroll-behavior:smooth}
@@ -23,7 +23,7 @@
     header .inner{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px;} 
     .tabs{display:flex; gap:10px; align-items:center;}
     .tab{font: 12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-decoration:none; color:var(--top-text); padding:6px 10px; border-radius:4px; background:transparent; border:1px solid transparent;}
-    .tab.active{background:rgba(0,0,0,.22); border-color:rgba(0,0,0,.12);} 
+    .tab.active{background:#f4f6f8; border-color:#e5e7eb;} 
     .tab:hover{background:var(--top-hover);} 
     .icons{display:flex; gap:12px;}
     .icon{display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; opacity:.95}
