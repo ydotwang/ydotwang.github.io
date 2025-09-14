@@ -357,22 +357,29 @@
             }
         }
 
-        /* Font Awesome icons (simplified) */
-        .fa-linkedin:before { content: "in"; }
-        .fa-github:before { content: "gh"; }
-        .icon.brands {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            text-align: center;
-            border-radius: 50%;
-            background: rgba(102, 126, 234, 0.1);
-            transition: background 0.3s ease;
-        }
-        .icon.brands:hover {
-            background: rgba(102, 126, 234, 0.2);
-        }
+                 /* Social icons */
+         .icon.brands {
+             display: inline-block;
+             width: 40px;
+             height: 40px;
+             line-height: 40px;
+             text-align: center;
+             border-radius: 50%;
+             background: rgba(102, 126, 234, 0.1);
+             transition: background 0.3s ease;
+             position: relative;
+         }
+         .icon.brands:hover {
+             background: rgba(102, 126, 234, 0.2);
+         }
+         .fa-linkedin:before { 
+             content: "💼"; 
+             font-size: 18px;
+         }
+         .fa-github:before { 
+             content: "🐙"; 
+             font-size: 18px;
+         }
     </style>
 </head>
 
@@ -380,10 +387,10 @@
     <!-- Wrapper for the entire page content -->
     <div id="wrapper">
 
-        <!-- Header Section -->
-        <header id="header">
-            <h1 class="large-text">YOUR NAME</h1>
-        </header>
+                 <!-- Header Section -->
+         <header id="header">
+             <h1 class="large-text">YUYANG WANG</h1>
+         </header>
 
         <!-- Navigation Section -->
         <nav id="nav">
@@ -394,11 +401,11 @@
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
-                <!-- Social media icons -->
-                <ul class="icons">
-                    <li><a href="https://www.linkedin.com/in/yourname/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="https://github.com/yourname" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
+                                 <!-- Social media icons -->
+                 <ul class="icons">
+                     <li><a href="https://www.linkedin.com/in/yuyang-wang-2026/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                     <li><a href="https://github.com/ydotwang" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                 </ul>
             </div>
         </nav>
 
@@ -421,7 +428,39 @@
             <article>
                 <h5>RESEARCH</h5>
 
-                                 <!-- Research Project 1 -->
+                                                  <!-- Research Project 1 -->
+                 <article>
+                     <header>
+                         <h2>Research Project Title 1</h2>
+                         <p>Keywords: placeholder keywords for first project</p>
+                     </header>
+                     <div>
+                         <div>
+                             <p>Research description placeholder - we will update this with your actual research content later. This section will contain the detailed description of your first research project, including methodology, findings, and significance.</p>
+                             
+                             <p><strong>★Features:</strong></p>
+                             <ul>
+                                 <li>Key contribution or finding 1</li>
+                                 <li>Key contribution or finding 2</li>
+                                 <li>Key contribution or finding 3</li>
+                             </ul>
+                             
+                             <p><strong>★Skills:</strong> Skills placeholder</p>
+                         </div>
+
+                         <div class="row">
+                             <div class="col-12">
+                                 <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
+                             </div>
+                         </div>
+                     </div>
+
+                     <ul class="actions special">
+                         <li><a href="#" class="button">View Paper</a></li>
+                     </ul>   
+                 </article>
+
+                 <!-- Research Project 2 - VR Project -->
                  <article>
                      <header>
                          <h2>Virtual Offshore Wind Turbines: Unity-Based VR Simulation for Mooring Line Design Evaluation</h2>
@@ -445,52 +484,11 @@
                          </div>
 
                          <div class="row">
-                             <div class="col-8 col-12-small">
+                             <div class="col-12">
                                  <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="VR turbine array with underwater seabed in Unity" /></a>
                              </div>
-                             <div class="col-4 col-12-small">
-                                 <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
-                             </div>
                          </div>
                      </div>
-
-                     <ul class="actions special">
-                         <li style="margin-right: 50px;"><a href="#" class="button">View Poster</a></li>
-                         <li><a href="#" class="button">Demo</a></li>
-                     </ul>   
-                 </article>
-
-                                 <!-- Research Project 2 -->
-                 <article>
-                     <header>
-                         <h2>Research Project Title 2</h2>
-                         <p>Keywords: placeholder keywords for second project</p>
-                     </header>
-
-                     <div>
-                         <div>
-                             <p>Research description placeholder - we will update this with your actual research content later. This section will contain the detailed description of your second research project, including methodology, findings, and significance.</p>
-                             
-                             <p><strong>★Features:</strong></p>
-                             <ul>
-                                 <li>Key contribution or finding 1</li>
-                                 <li>Key contribution or finding 2</li>
-                                 <li>Key contribution or finding 3</li>
-                             </ul>
-                             
-                             <p><strong>★Skills:</strong> Skills placeholder</p>
-                         </div>
-                     </div>
-
-                     <div class="row">
-                         <div class="col-12">
-                             <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
-                         </div>
-                     </div>
-
-                     <ul class="actions special">
-                         <li><a href="#" class="button">Poster 2</a></li>
-                     </ul>
                  </article>
 
                 <!-- Selected Projects Section -->
@@ -536,29 +534,29 @@
 
         <!-- Footer Section -->
         <footer id="footer">
-            <section class="split contact">
-                <section>
-                    <h3>Phone</h3>
-                    <p><a href="tel:+1234567890">(XXX) XXX-XXXX</a></p>
-                </section>
-                <section>
-                    <h3>Email</h3>
-                    <p><a href="mailto:you@email.com">you@email.com</a></p>
-                </section>
-                <section>
-                    <h3>Social</h3>
-                    <ul class="icons alt">
-                        <li><a href="https://www.linkedin.com/in/yourname/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="https://github.com/yourname" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                    </ul>
-                </section>
-            </section>
+                         <section class="split contact">
+                 <section>
+                     <h3>Phone</h3>
+                     <p><a href="tel:+12076167095">(207) 616-7095</a></p>
+                 </section>
+                 <section>
+                     <h3>Email</h3>
+                     <p><a href="mailto:yuyangwang2026.1@u.northwestern.edu">yuyangwang2026.1@u.northwestern.edu</a></p>
+                 </section>
+                 <section>
+                     <h3>Social</h3>
+                     <ul class="icons alt">
+                         <li><a href="https://www.linkedin.com/in/yuyang-wang-2026/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                         <li><a href="https://github.com/ydotwang" target="_blank" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                     </ul>
+                 </section>
+             </section>
         </footer>
 
-        <!-- Copyright -->
-        <div id="copyright">
-            <ul><li>&copy; Your Name</li></ul>
-        </div>
+                 <!-- Copyright -->
+         <div id="copyright">
+             <ul><li>&copy; Yuyang Wang</li></ul>
+         </div>
 
     </div>
 </body>
