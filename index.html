@@ -450,7 +450,7 @@
                 <article>
                     <header>
                         <h2>Accessible LLM Interaction for Blind and Screen-Reader Users: Biases & Improvements</h2>
-                        <p class="research-meta">Keywords: Accessibility; Blind users; Screen reader; Bias & fairness; HCI evaluation; LLM; Next.js; Edge streaming; Privacy</p>
+                        <p class="research-meta">Keywords: Accessibility; Blind users; Screen reader; Bias & fairness; HCI evaluation; LLM;</p>
                     </header>
                     <div>
                         <div>
@@ -471,24 +471,22 @@
 
                         <div class="row gallery-4">
                             <div class="col-8 col-12-small">
-                                <a class="image fit"><img src="images/poster1.1.jpg" loading="lazy" alt="Poster main - accessible LLM research" /></a>
+                                <a class="image fit"><img src="images/poster1.1.png" loading="lazy" alt="Poster main - accessible LLM research" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/poster1.2.jpg" loading="lazy" alt="Poster detail 1" /></a>
+                                <a class="image fit"><img src="images/poster1.2.png" loading="lazy" alt="Poster detail 1" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/poster1.3.jpg" loading="lazy" alt="Poster detail 2" /></a>
+                                <a class="image fit"><img src="images/poster1.3.png" loading="lazy" alt="Poster detail 2" /></a>
                             </div>
                             <div class="col-4 col-12-small">
-                                <a class="image fit"><img src="images/poster1.4.jpg" loading="lazy" alt="Poster detail 3" /></a>
+                                <a class="image fit"><img src="images/poster1.4.png" loading="lazy" alt="Poster detail 3" /></a>
                             </div>
                         </div>
                     </div>
 
                     <ul class="actions special">
-                        <li><a href="DEMO_LINK" target="_blank" rel="noopener" class="button">Demo</a></li>
-                        <li><a href="CODE_LINK" target="_blank" rel="noopener" class="button">Code</a></li>
-                        <li><a href="DOCS_OR_DIAGRAM" target="_blank" rel="noopener" class="button">Study Overview</a></li>
+                        <li><a href="https://github.com/AGPTCollabLab/ChatGPT_Frontned_NSF" target="_blank" rel="noopener" class="button">Codebase</a></li>
                     </ul>
                 </article>
 
@@ -496,7 +494,7 @@
                  <article>
                      <header>
                          <h2>Virtual Offshore Wind Turbines: Unity-Based VR Simulation for Mooring Line Design Evaluation</h2>
-                         
+                         <p class="research-meta">Keywords: VR visualization; Unity; Offshore wind; Mooring design; Stakeholder engagement; Underwater visualization</p>
                      </header>
                      <div>
                          <div>
@@ -515,51 +513,80 @@
                              <p><strong>★Skills:</strong> Unity (C#), XR Interaction Toolkit, SteamVR, physics & lighting, Shader Graph/post-processing, scene optimization, Blender asset workflow, usability/engagement evaluation, Git.</p>
                          </div>
 
-                         <div class="row">
-                             <div class="col-12">
-                                 <a class="image fit"><img src="images/poster2.jpg" loading="lazy" alt="VR turbine array with underwater seabed in Unity" /></a>
-                             </div>
-                         </div>
-                     </div>
-                 </article>
+                                                 <div class="row">
+                            <div class="col-12">
+                                <a class="image fit"><img src="images/poster2.jpg" loading="lazy" alt="VR turbine array with underwater seabed in Unity" /></a>
+                            </div>
+                        </div>
+
+                        <ul class="actions special">
+                            <li><a href="https://github.com/ColbyINSITE/WindTurbinesSummer2024" target="_blank" rel="noopener" class="button">Codebase</a></li>
+                        </ul>
+                    </div>
+                </article>
 
                 <!-- Selected Projects Section -->
                 <article>
                     <h5>SELECTED PROJECTS</h5>
                     
-                    <!-- Project 1 -->
+                    <!-- Project 1: Netify -->
                     <header>
-                        <h2>Project Title 1</h2>
+                        <h2>Netify — Playlist Migration from NetEase to Spotify</h2>
+                        <p class="research-meta">Timeline: May 2025 · Stack: Next.js 14 · TypeScript · Tailwind CSS · FastAPI (Python) · Spotify Web API · NetEase API · Vercel · Fly.io</p>
                     </header>
+
+                    <p class="lead">Netify addresses music lock-in by reliably transferring entire NetEase Cloud Music playlists to Spotify. The app authenticates securely via <strong>OAuth 2.0 PKCE</strong>, fetches large playlists with pagination and fallbacks (handling the NetEase ~800-track limit), and uses a <em>fuzzy matching</em> pipeline (duration tolerance + artist normalization) to find the best Spotify tracks. A progress UI and a missing-tracks report make long transfers transparent. Since launch, Netify has helped <strong>50+ users migrate 10,000+ songs</strong>.</p>
+
+                    <ul class="features">
+                        <li><strong>Secure auth & session:</strong> Spotify OAuth 2.0 with PKCE; callback, token exchange, and session state managed in React Context.</li>
+                        <li><strong>Large-playlist handling:</strong> Robust pagination/chunking and graceful fallbacks for NetEase API limits (~800 tracks/playlist).</li>
+                        <li><strong>Smart matching:</strong> RapidFuzz with duration tolerance and artist normalization cut mismatches by <strong>≈50%</strong> vs title-only.</li>
+                        <li><strong>Full transfer:</strong> Creates Spotify playlists with tracks, name, and cover; progress bar + detailed missing-track report.</li>
+                        <li><strong>Deployable & fast:</strong> Next.js frontend on Vercel; FastAPI backend on Fly.io; bilingual UI (简体中文 / English).</li>
+                    </ul>
+
+                    <p class="skills"><strong>Skills:</strong> Next.js (React), TypeScript, Tailwind CSS, FastAPI (Python), OAuth 2.0 PKCE, REST APIs, RapidFuzz, pagination & resilience patterns, cloud deployment (Vercel/Fly.io).</p>
+
                     <div class="row">
-                        <div class="col-5 col-12-small">
-                            <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
+                        <div class="col-12">
+                            <a class="image fit"><img src="images/project1.png" loading="lazy" alt="Netify playlist migration progress UI" /></a>
                         </div>
-                        <div class="col-7 col-12-small">
-                            <p>Project description placeholder - we will update this with your actual project content later. This section will describe your first selected project with details about the problem, approach, and outcomes.</p>
-                        </div>
-                        <ul class="actions special">
-                            <li><a href="#" class="button">GitHub Repo</a></li>
-                        </ul>
                     </div>
+
+                    <ul class="actions special">
+                        <li><a href="https://github.com/ydotwang/netify" target="_blank" rel="noopener" class="button">Codebase</a></li>
+                        <li><a href="https://netify-five.vercel.app/" target="_blank" rel="noopener" class="button">Website</a></li>
+                    </ul>
                 </article>
 
-                <!-- Project 2 -->
+                <!-- Project 2: Light RPG Prototype -->
                 <article>
                     <header>
-                        <h2>Project Title 2</h2>
+                        <h2>Light — RPG Game Prototype</h2>
+                        <p class="research-meta">Timeline: Jan 2023 · Team: 5 · Engine: Unreal Engine 5</p>
                     </header>
+
+                    <p class="lead"><em>Light</em> is a vertical-slice RPG prototype exploring AI-driven enemies and light-based puzzle mechanics. In Agile sprints, our team built a playable loop that combines patrol/chase enemies with laser–mirror–sensor puzzles to test how systemic AI pressure and spatial reasoning affect player engagement. Internal playtests showed a <strong>~50% increase in engagement</strong> after iterating on puzzle clarity and combat pacing.</p>
+
+                    <ul class="features">
+                        <li><strong>Team leadership & process:</strong> Led a 5-person team through Agile sprints (backlog, stand-ups, playtest-driven iteration); produced a 14-minute demo to showcase the slice.</li>
+                        <li><strong>AI enemies:</strong> Implemented patrol, random roam, and player-chase behaviors with state logic and pathfinding; tuned perception and chase windows for readable difficulty.</li>
+                        <li><strong>Puzzle design:</strong> Built interactive laser emitters, mirrors, and sensors to gate progression; iterated on level hints and fail-safe resets to reduce player confusion.</li>
+                        <li><strong>Game feel & audio:</strong> Composed original soundtrack/SFX in GarageBand and integrated cues to heighten combat intensity and puzzle feedback.</li>
+                        <li><strong>Playtesting & QA:</strong> Ran multi-round tests to find bugs, triaged issues, and measured engagement time and completion rates to guide tuning.</li>
+                    </ul>
+
+                    <p class="skills"><strong>Skills:</strong> Unreal Engine 5, gameplay programming & AI logic, level/puzzle design, playtesting & telemetry, Agile collaboration, audio production (GarageBand), demo production.</p>
+
                     <div class="row">
-                        <div class="col-4 col-12-small">
-                            <a class="image fit"><img src="images/headshot.jpg" loading="lazy" alt="" /></a>
+                        <div class="col-12">
+                            <a class="image fit"><img src="images/project2.jpg" loading="lazy" alt="Light RPG prototype: enemy patrol and laser-mirror puzzle" /></a>
                         </div>
-                        <div class="col-8 col-12-small">
-                            <p>Project description placeholder - we will update this with your actual project content later. This section will describe your second selected project with details about the problem, approach, and outcomes.</p>
-                        </div>
-                        <ul class="actions special">
-                            <li><a href="#" class="button">GitHub Repo</a></li>
-                        </ul>
                     </div>
+
+                    <ul class="actions special">
+                        <li><a href="https://sites.google.com/view/cs269yuyangwangportfolio" target="_blank" rel="noopener" class="button">Portfolio</a></li>
+                    </ul>
                 </article>
 
             </div>
