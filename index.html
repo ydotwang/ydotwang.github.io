@@ -7,66 +7,68 @@
   <meta name="description" content="Research and projects portfolio" />
   <style>
     :root{
-      --bg: #ffffff; --fg:#0f172a; --muted:#64748b; --card:#f8fafc; --accent:#2563eb; --ring:#93c5fd; --line:#e2e8f0;
-      --max: 1100px; --radius: 14px;
+      --bg:#ffffff; --fg:#111318; --muted:#4b5563; --line:#e5e7eb; --accent:#111318;
+      --top:#4b4f54; --top-line:#30343a; --top-hover:#676c72; --top-text:#f7f7f7;
+      --max: 820px; --radius: 14px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b0e14; --fg:#e5e7eb; --muted:#9ca3af; --card:#121726; --accent:#60a5fa; --ring:#1d4ed8; --line:#233046; }
+      :root{ --bg:#0c0f14; --fg:#e6e7eb; --muted:#a2a9b3; --line:#222832; --accent:#e6e7eb; --top:#2d3237; --top-line:#1d2228; --top-hover:#3b4249; --top-text:#f4f6f8; }
     }
 
     html{scroll-behavior:smooth}
-    body{margin:0; font: 16px/1.65 system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--fg);} 
+    body{margin:0; background:var(--bg); color:var(--fg);} 
 
-    /* Header */
-    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(160%) blur(8px); background:color-mix(in oklab, var(--bg) 88%, transparent); border-bottom:1px solid var(--line);} 
-    header .inner{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 20px;} 
-    .brand{font-weight:800; letter-spacing:.2px;}
-    nav{display:flex; align-items:center; gap:6px; flex-wrap:wrap;}
-    nav a{color:var(--fg); text-decoration:none; padding:8px 10px; border-radius:10px;}
-    nav a:hover, nav a:focus{ outline:none; background:var(--card);} 
+    /* Top bar (matches screenshot) */
+    header{position:sticky; top:0; z-index:10; background:var(--top); color:var(--top-text); border-bottom:1px solid var(--top-line);} 
+    header .inner{max-width:var(--max); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 20px;} 
+    .tabs{display:flex; gap:10px; align-items:center;}
+    .tab{font: 12px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; text-decoration:none; color:var(--top-text); padding:6px 10px; border-radius:4px; background:transparent; border:1px solid transparent;}
+    .tab.active{background:rgba(0,0,0,.22); border-color:rgba(0,0,0,.12);} 
+    .tab:hover{background:var(--top-hover);} 
+    .icons{display:flex; gap:12px;}
+    .icon{display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; opacity:.95}
+    .icon svg{width:16px; height:16px; fill:var(--top-text)}
 
-    .container{max-width:var(--max); margin:auto; padding: 28px 20px 96px;}
+    /* Typography */
+    .container{max-width:var(--max); margin:auto; padding: 36px 20px 96px;}
+    p, li{font: 16px/1.9 Georgia, "Times New Roman", Times, serif; color:var(--fg);} 
+    h1, h2, h3, nav, .btn{font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;}
 
     /* Hero */
-    .hero{padding: 12px 0 8px;}
-    .hero-grid{display:grid; grid-template-columns: 150px 1fr; gap:22px; align-items:center;}
-    @media (max-width: 720px){ .hero-grid{grid-template-columns: 100px 1fr;} }
-    .avatar{width:100%; max-width:150px; aspect-ratio:1/1; object-fit:cover; border-radius:14px; border:1px solid var(--line); background:#0001}
-    .hero h1{margin:0 0 6px; font-size: clamp(28px, 4.2vw, 40px);} 
-    .hero p{margin:0; color:var(--muted)}
+    .hero{padding: 6px 0 4px;}
+    .hero-grid{display:grid; grid-template-columns: 160px 1fr; gap:24px; align-items:start;}
+    @media (max-width:740px){ .hero-grid{grid-template-columns: 120px 1fr;} }
+    .avatar{width:160px; height:160px; object-fit:cover; border-radius:6px; border:1px solid var(--line);}
+    .hero p{margin:.2rem 0 0;}
 
-    /* Sections */
-    .section{margin: 34px 0 12px; display:flex; align-items:baseline; justify-content:space-between; gap:16px;}
-    .section h2{font-size: 18px; text-transform:uppercase; letter-spacing: .16em; margin:0; color:var(--muted)}
+    /* Section header + divider */
+    .divider{height:1px; background:var(--line); margin:46px 0;}
+    .section-title{font-size:20px; letter-spacing:.24em; color:#111; opacity:.85; margin:0 0 14px;}
+    @media (prefers-color-scheme: dark){ .section-title{color:#e6e7eb; opacity:.8} }
 
-    /* Research items */
-    .research-list{display:grid; gap:18px;}
-    .research{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:grid; grid-template-columns: 1.2fr .8fr; gap:18px;}
-    @media (max-width:900px){ .research{grid-template-columns: 1fr;}}
-    .research h3{margin:.2rem 0; font-size: 20px;}
-    .meta{font-size:14px; color:var(--muted)}
-    .keywords{display:flex; flex-wrap:wrap; gap:8px;}
-    .tag{font-size:12px; padding:.2rem .5rem; border:1px solid var(--line); border-radius:999px; color:var(--muted);} 
-    .lead{margin:.35rem 0 .55rem;}
-    .features{margin:.2rem 0 .4rem; padding-left: 1.2rem;}
-    .features li{margin:.2rem 0;}
-    .features li::marker{content:"★  "; color:var(--accent);}  
-    .skills{font-size: 13px; color:var(--muted)}
-    .thumb{aspect-ratio: 16/9; width:100%; object-fit:cover; border-radius:12px; border:1px solid var(--line); background:#0001}
+    /* Research blocks */
+    .research{margin: 10px 0 28px;}
+    .research h3{font-size:24px; letter-spacing:.02em; margin: 0 0 10px;}
+    .meta{font-style:italic; color:var(--muted); margin: -6px 0 10px; font-size:15px}
+    .features{margin: 10px 0 12px; padding-left: 1.2rem;}
+    .features li{margin:.45rem 0;}
+    .features li::marker{content:"★  ";}
+    .skills{margin: 10px 0 16px;}
+    .figure-row{display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin: 10px 0 10px;}
+    .figure{width:100%; aspect-ratio: 4/3; object-fit:cover; border:1px solid var(--line);}
+    .actions{display:flex; gap:14px;}
+    .btn{display:inline-flex; align-items:center; justify-content:center; text-decoration:none; text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:12px; padding:10px 18px; border-radius:4px; border:1px solid #111; color:#111; background:transparent;}
+    .btn:hover{background:#111; color:#fff;}
+    @media (prefers-color-scheme: dark){ .btn{border-color:#e6e7eb; color:#e6e7eb} .btn:hover{background:#e6e7eb; color:#0c0f14} }
 
-    /* Cards grid for projects */
-    .cards{display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px;}
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px;}
-    .card h3{margin:.2rem 0; font-size: 18px;}
-
-    /* Buttons */
-    .actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:.5rem .75rem; border-radius:10px; text-decoration:none; font-weight:600; border:1px solid var(--line); color:var(--fg);}
-    .btn.primary{background:var(--accent); border-color:transparent; color:white;}
-    .btn:hover{box-shadow:0 0 0 3px color-mix(in oklab, var(--ring) 40%, transparent)}
+    /* Projects */
+    .project{display:grid; grid-template-columns: 1fr 1.4fr; gap:26px; padding:34px 0; border-top:1px solid var(--line);} 
+    @media (max-width:900px){ .project{grid-template-columns: 1fr;}}
+    .project h3{font-size:20px; letter-spacing:.03em; margin:0 0 10px;}
+    .project .thumb{width:100%; border:1px solid var(--line);} 
 
     /* Footer */
-    footer{margin-top:48px; border-top:1px solid var(--line);} 
+    footer{margin-top:52px; border-top:1px solid var(--line);} 
     footer .inner{max-width:var(--max); margin:auto; padding:18px 20px 48px; display:grid; gap:6px;} 
     .muted{color:var(--muted)}
 
@@ -77,16 +79,19 @@
   <a class="sr-only" href="#main">Skip to content</a>
   <header>
     <div class="inner">
-      <div class="brand">Your Name</div>
-      <nav aria-label="Primary">
-        <a href="#main">Home</a>
-        <a href="cv.pdf">CV</a>
-        <a href="#contact">Contact</a>
+      <nav class="tabs" aria-label="Primary">
+        <a class="tab active" href="#">Home</a>
+        <a class="tab" href="cv.pdf">CV</a>
+        <a class="tab" href="#contact">Contact</a>
       </nav>
-      <nav aria-label="Social">
-        <a href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
-      </nav>
+      <div class="icons">
+        <a class="icon" href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.53 1.72-2.53 3.5V23H8V8z"/></svg>
+        </a>
+        <a class="icon" href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.98 5.24.98 11.5c0 4.85 3.15 8.97 7.51 10.42.55.1.75-.24.75-.53 0-.26-.01-1.14-.02-2.07-3.05.66-3.7-1.3-3.7-1.3-.5-1.26-1.23-1.6-1.23-1.6-.99-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.67 2.56 1.19 3.18.91.1-.71.38-1.19.69-1.46-2.43-.28-4.99-1.21-4.99-5.4 0-1.19.43-2.16 1.13-2.92-.11-.28-.49-1.42.11-2.96 0 0 .92-.29 3.02 1.12a10.5 10.5 0 0 1 5.5 0c2.1-1.41 3.02-1.12 3.02-1.12.6 1.54.22 2.68.11 2.96.7.76 1.13 1.73 1.13 2.92 0 4.2-2.56 5.12-4.99 5.4.39.34.74 1.01.74 2.05 0 1.48-.01 2.67-.01 3.03 0 .29.2.63.76.52A10.98 10.98 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -95,119 +100,76 @@
       <div class="hero-grid">
         <img class="avatar" src="images/headshot.jpg" alt="Headshot" />
         <div>
-          <h1>Your Name</h1>
-          <p>Short one‑liner about your focus (we will edit content later).</p>
+          <p>Hi! I’m a Computer Science graduate student at the University of Wisconsin–Madison with experience in game theory, graph theory, and algorithm design. I am eager to develop my skills further and contribute to innovative projects in these exciting fields!</p>
         </div>
       </div>
     </section>
 
-    <div class="section" id="research">
-      <h2>RESEARCH</h2>
-    </div>
+    <div class="divider"></div>
 
-    <div class="research-list">
-      <article class="research">
-        <div>
-          <h3>TITLE OF YOUR RESEARCH PROJECT</h3>
-          <div class="meta">Keywords:
-            <span class="keywords">
-              <span class="tag">keyword-1</span>
-              <span class="tag">keyword-2</span>
-              <span class="tag">keyword-3</span>
-            </span>
-          </div>
-          <p class="lead">1–3 sentence abstract placeholder describing the problem, why it matters, the approach, and a headline result. We will replace with your real text later.</p>
-          <ul class="features">
-            <li>Feature/Contribution 1 placeholder.</li>
-            <li>Feature/Contribution 2 placeholder.</li>
-            <li>Feature/Contribution 3 placeholder.</li>
-          </ul>
-          <p class="skills"><strong>Skills:</strong> Python · NumPy · PyTorch · C++ · CUDA</p>
-          <div class="actions">
-            <a class="btn primary" href="#">View Paper</a>
-            <a class="btn" href="#">Code</a>
-            <a class="btn" href="#">Demo</a>
-            <a class="btn" href="#">Dataset</a>
-          </div>
-        </div>
-        <div>
-          <img class="thumb" src="images/headshot.jpg" alt="Figure placeholder" />
-        </div>
-      </article>
+    <h2 class="section-title">RESEARCH</h2>
 
-      <article class="research">
-        <div>
-          <h3>SECOND RESEARCH PROJECT TITLE</h3>
-          <div class="meta">Subjects:
-            <span class="keywords">
-              <span class="tag">subject-1</span>
-              <span class="tag">subject-2</span>
-            </span>
-          </div>
-          <p class="lead">Short abstract placeholder describing your theoretical/empirical focus. We will fill in the specifics together.</p>
-          <ul class="features">
-            <li>What you analyzed/built placeholder.</li>
-            <li>Visualization or evaluation details placeholder.</li>
-            <li>Key takeaway/insight placeholder.</li>
-          </ul>
-          <p class="skills"><strong>Skills:</strong> Python · MATLAB · NumPy · Matplotlib</p>
-          <div class="actions">
-            <a class="btn" href="#">View Paper</a>
-            <a class="btn" href="#">Demo / Plots</a>
-          </div>
-        </div>
-        <div>
-          <img class="thumb" src="images/headshot.jpg" alt="Figure placeholder" />
-        </div>
-      </article>
-    </div>
-
-    <div class="section" id="projects">
-      <h2>SELECTED PROJECTS</h2>
-    </div>
-
-    <div class="cards">
-      <article class="card">
-        <h3>PROJECT TITLE</h3>
-        <div class="meta">Optional subtitle</div>
-        <p class="lead">One‑paragraph summary placeholder describing the goal, core method, and outcome.</p>
-        <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
-      </article>
-
-      <article class="card">
-        <h3>PROJECT TITLE</h3>
-        <p class="lead">Short description placeholder.</p>
-        <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
-      </article>
-
-      <article class="card">
-        <h3>PROJECT TITLE</h3>
-        <p class="lead">Short description placeholder.</p>
-        <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
-      </article>
-    </div>
-
-    <div class="section" id="contact">
-      <h2>CONTACT</h2>
-    </div>
-    <div class="cards">
-      <div class="card">
-        <h3>Get in touch</h3>
-        <p class="lead"><strong>Phone:</strong> (XXX) XXX‑XXXX<br>
-        <strong>Email:</strong> you@school.edu</p>
-        <p class="muted">Add social links in the header (GitHub/LinkedIn). You can add more here if you like.</p>
+    <section class="research">
+      <h3>Upper Bounding Unit Distance Graphs</h3>
+      <div class="meta">Keywords: beam search; unit distance graphs; exploitation–exploration; planar geometry; combinatorial optimization</div>
+      <p>What is the maximum number of edges u(n) that a unit distance graph (UDG) of n vertices can have, as asked by an unsolved problem of Paul Erdős? We address the problem of determining the maximum number of edges in a UDG of n vertices using computer search. We seek to demonstrate a computer algorithm to generate dense UDGs for vertex counts up to at least 100. Via beam search with an added visitation metric, our algorithm finds all known maximally dense UDGs up to isomorphism at the push of a button. In addition, for 15 &lt; n, where u(n) is unknown, i) the algorithm finds all previously published densest UDGs up to isomorphism for 15 &lt; n ≤ 30, ii) the rate of growth of u(n)/n remains similar for 30 &lt; n. iii) we build a database of over 60 million UDGs found by our algorithm. The preprint of the paper is available on arXiv.</p>
+      <ul class="features">
+        <li>Designed a novel heuristic beam search algorithm to improved the maximum number of edges in unit distance graphs.</li>
+        <li>Explored graph constructions from the Moser Lattice with heuristic generating rules like rotation, translation, and reflection.</li>
+        <li>Used multiprocessor and GPU implementations to optimize the efficiency of the search algorithms.</li>
+      </ul>
+      <p class="skills"><strong>Skills:</strong> Python; Numpy; Matplotlib, Pandas, Scikit‑learn, Multiprocessing.</p>
+      <div class="figure-row">
+        <img class="figure" src="images/headshot.jpg" alt="placeholder figure" />
+        <img class="figure" src="images/headshot.jpg" alt="placeholder figure" />
       </div>
-      <div class="card">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="cv.pdf">CV (PDF)</a></li>
-          <li><a href="#research">Top of Research</a></li>
-          <li><a href="#">Google Scholar</a> (optional)</li>
-          <li><a href="#">Portfolio</a> (optional)</li>
-        </ul>
+      <div class="actions">
+        <a class="btn" href="#">View Paper</a>
+        <a class="btn" href="#">Code and Database</a>
       </div>
-    </div>
+    </section>
 
+    <section class="research">
+      <h3>Laplacian Eigenmaps and Chebyshev Polynomials</h3>
+      <div class="meta">Subjects: probability; metric geometry; statistics theory</div>
+      <p>Eigenmaps are important in analysis, geometry, and machine learning, particularly in nonlinear dimension reduction. This project investigates the relationship between eigen‑coordinates of graph Laplacians and Chebyshev polynomials. We will consider constructing graph Laplacian operators on S{−1,1}S, S{−1,1}^2S, the sphere S^2S, and the Sierpinski gasket. We also have explored these operators when the points are selected randomly with various distributions, such as uniform and Gaussian.</p>
+      <ul class="features">
+        <li>Studied eigenmaps of Laplacian matrices transforming high‑dimensional data into graph representations.</li>
+        <li>Used NumPy and Matplotlib to visualize the eigenmaps.</li>
+        <li>Explored the properties of eigenmaps, including data distribution, manifold smoothness, and boundary conditions.</li>
+      </ul>
+      <p class="skills"><strong>Skills:</strong> Python, MATLAB, NumPy.</p>
+      <div class="actions">
+        <a class="btn" href="#">View Paper</a>
+        <a class="btn" href="#">Demo / Plots</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <h2 class="section-title">SELECTED PROJECTS</h2>
+
+    <section class="project">
+      <img class="thumb" src="images/headshot.jpg" alt="project image" />
+      <div>
+        <h3>Optimizing a One‑Day Disneyland Itinerary</h3>
+        <p>This project tackles the challenge of making the most of a one‑day visit to Disneyland Magic Kingdom. Using real wait time data, park layout, and integer programming, it generates optimal schedules to maximize rides played, minimize wait and walking time, and balance personal preferences.</p>
+        <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
+      </div>
+    </section>
+
+    <section class="project">
+      <img class="thumb" src="images/headshot.jpg" alt="project image" />
+      <div>
+        <h3>Computer Visualizations on the Hyperbolic Plane</h3>
+        <p>This project explores games and visualizations designed in hyperbolic geometry. It combines mathematical understanding with basic web programming to simulate geodesics and tilings in hyperbolic space.</p>
+        <div class="actions"><a class="btn" href="#">GitHub Repo</a></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <div id="contact"></div>
     <footer>
       <div class="inner">
         <div>© <span id="y"></span> Your Name</div>
@@ -217,7 +179,6 @@
   </main>
 
   <script>
-    // Update year automatically
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
