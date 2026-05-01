@@ -5,9 +5,40 @@
     <title>Yuyang Wang</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Yuyang Wang — Northwestern undergrad researching AR/VR interaction, accessible AI, and human-AI evaluation.">
+    <meta name="author" content="Yuyang Wang">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Open Graph (Facebook, LinkedIn, iMessage, Slack, Discord, WeChat, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Yuyang Wang">
+    <meta property="og:title" content="Yuyang Wang">
+    <meta property="og:description" content="Northwestern undergrad researching AR/VR interaction, accessible AI, and human-AI evaluation.">
+    <meta property="og:url" content="https://ydotwang.github.io/">
+    <meta property="og:image" content="https://ydotwang.github.io/images/headshot.jpg">
+    <meta property="og:image:alt" content="Portrait of Yuyang Wang">
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yuyang Wang">
+    <meta name="twitter:description" content="Northwestern undergrad researching AR/VR interaction, accessible AI, and human-AI evaluation.">
+    <meta name="twitter:image" content="https://ydotwang.github.io/images/headshot.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!--
+        ANALYTICS — GoatCounter (privacy-friendly, no cookies).
+        SETUP (one time, ~30s):
+          1. Sign up free at https://www.goatcounter.com/signup (pick any subdomain, e.g. "ydotwang")
+          2. Replace YOURCODE below with that subdomain (and remove this comment block)
+          3. View your dashboard at https://YOURCODE.goatcounter.com
+    -->
+    <script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
     <style>
         :root {
             --ink: #0a0a0a;
@@ -440,6 +471,17 @@
             text-transform: uppercase;
         }
         #copyright ul { list-style: none; margin: 0; padding: 0; }
+        #copyright .visit-counter {
+            display: inline-block;
+            margin-left: 14px;
+            padding-left: 14px;
+            border-left: 1px solid var(--hairline);
+            color: var(--muted);
+            font-variant-numeric: tabular-nums;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        #copyright .visit-counter.is-loaded { opacity: 1; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -694,10 +736,10 @@
             </section>
         </footer>
 
-                 <!-- Copyright -->
-         <div id="copyright">
-             <ul><li>&copy; Yuyang Wang</li></ul>
-         </div>
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul><li>&copy; Yuyang Wang<span class="visit-counter" id="visitCounter" aria-live="polite"><span id="visitCount">…</span> visits</span></li></ul>
+        </div>
 
     <script>
   // Lightbox: click any .image.fit img to open, click backdrop to close
@@ -718,6 +760,30 @@
       if (e.key === 'Escape') lb.classList.remove('show');
     });
   }
+
+  // Visit counter — increments and displays a public visit count via CounterAPI.
+  // Only counts unique sessions (not every refresh) using sessionStorage.
+  (function visitCounter() {
+    const wrap = document.getElementById('visitCounter');
+    const out = document.getElementById('visitCount');
+    if (!wrap || !out) return;
+    const namespace = 'ydotwang';
+    const key = 'visits';
+    const alreadyCounted = sessionStorage.getItem('vc_counted') === '1';
+    const url = alreadyCounted
+      ? `https://api.counterapi.dev/v1/${namespace}/${key}`
+      : `https://api.counterapi.dev/v1/${namespace}/${key}/up`;
+    fetch(url)
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        const n = (d && (d.count ?? d.value)) ?? null;
+        if (n == null) return;
+        out.textContent = Number(n).toLocaleString();
+        wrap.classList.add('is-loaded');
+        if (!alreadyCounted) sessionStorage.setItem('vc_counted', '1');
+      })
+      .catch(() => {});
+  })();
 </script>
 </div>
 </body>
