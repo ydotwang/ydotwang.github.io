@@ -244,8 +244,8 @@
         <div class="nav">
             <ul class="links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="CV/YuyangWang_CV.pdf" target="_blank" rel="noopener">CV</a></li>
                 <li class="active"><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="CV/YuyangWang_CV.pdf" target="_blank" rel="noopener">CV</a></li>
             </ul>
         </div>
     </div>
@@ -261,14 +261,14 @@
                     <a class="image fit"><img src="Hobby/Guitar.jpg" alt="Playing fingerstyle guitar"></a>
                 </div>
                 <div class="col-6" style="display:flex;align-items:center;">
-                    <p>Fingerstyle lets me arrange melody, bass, and percussive hits on one guitar. Photography helps me slow down and notice details in everyday scenes.</p>
+                    <p>Guitar calms me down. Photography helps me find beauty.</p>
                 </div>
             </div>
         </section>
 
         <section>
             <h2>Photo Gallery</h2>
-            <div class="gallery-grid">
+            <div class="gallery-grid" id="galleryGrid">
                 <a class="image fit"><img src="Hobby/DSCF4542.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/DSCF4696.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/DSC05887-2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
@@ -279,7 +279,9 @@
                 <a class="image fit"><img src="Hobby/DSC08450.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/DSC08563-Enhanced-NR.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/DSC09318-2-2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC09662-3.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/DSC09702-7.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/F21B249F-B3A5-4960-AD99-E324DEBCFA9E.JPG" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/Mt.nowhere.jpg" loading="lazy" decoding="async" alt="Mt. Nowhere"></a>
                 <a class="image fit"><img src="Hobby/Photo1.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
                 <a class="image fit"><img src="Hobby/Photo2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
@@ -300,6 +302,21 @@
     <footer>&copy; Yuyang Wang</footer>
 </div>
 <script>
+    // Shuffle the photo gallery order on every page load
+    (function shuffleGallery() {
+        const grid = document.getElementById('galleryGrid');
+        if (!grid) return;
+        const items = Array.from(grid.children);
+        for (let i = items.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [items[i], items[j]] = [items[j], items[i]];
+        }
+        const frag = document.createDocumentFragment();
+        items.forEach((el) => frag.appendChild(el));
+        grid.appendChild(frag);
+    })();
+
+    // Lightbox: click any photo to enlarge
     const lb = document.getElementById('lb');
     const lbImg = lb ? lb.querySelector('img') : null;
     if (lb && lbImg) {
