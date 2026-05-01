@@ -149,6 +149,7 @@
             border-radius: 0;
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             display: block;
+            cursor: zoom-in;
         }
         .image.fit img:hover {
             transform: translateY(-2px);
@@ -160,14 +161,36 @@
             object-fit: cover;
         }
 
-        .gallery .image.fit img {
-            height: 220px;
+        /* Photo grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .gallery-grid .image.fit { display: block; }
+        .gallery-grid .image.fit img {
+            width: 100%;
+            height: 240px;
             object-fit: cover;
-            border-radius: 0;
             border: 1px solid var(--hairline);
             background: var(--paper);
             padding: 6px;
         }
+        @media (max-width: 1024px) {
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .gallery-grid .image.fit img { height: 220px; }
+        }
+        @media (max-width: 640px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .gallery-grid .image.fit img { height: 180px; padding: 4px; }
+        }
+
+        /* Lightbox */
+        .lightbox { position: fixed; inset: 0; background: rgba(10,10,10,.92); display: none; align-items: center; justify-content: center; z-index: 9999; }
+        .lightbox img { max-width: 92vw; max-height: 92vh; }
+        .lightbox.show { display: flex; }
+        .lightbox:focus { outline: none; }
 
         h2 {
             font-family: var(--serif);
@@ -245,24 +268,55 @@
 
         <section>
             <h2>Photo Gallery</h2>
-            <div class="row gallery" style="margin-top:18px">
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo1.jpg" alt="Photograph 1"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo2.jpg" alt="Photograph 2"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo3.jpg" alt="Photograph 3"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo4.jpg" alt="Photograph 4"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo10.jpg" alt="Photograph 10"></a></div>
-            </div>
-            <div class="row gallery" style="margin-top:14px">
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo5.jpg" alt="Photograph 5"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo6.jpg" alt="Photograph 6"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo7.jpg" alt="Photograph 7"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo8.jpg" alt="Photograph 8"></a></div>
-                <div class="col-3"><a class="image fit"><img src="Hobby/Photo9.jpg" alt="Photograph 9"></a></div>
+            <div class="gallery-grid">
+                <a class="image fit"><img src="Hobby/DSCF4542.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSCF4696.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC05887-2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC06789-HDR-2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC07459.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC07520.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC08095.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC08450.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC08563-Enhanced-NR.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC09318-2-2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/DSC09702-7.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Mt.nowhere.jpg" loading="lazy" decoding="async" alt="Mt. Nowhere"></a>
+                <a class="image fit"><img src="Hobby/Photo1.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo2.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo3.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo4.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo5.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo6.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo7.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo8.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo9.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
+                <a class="image fit"><img src="Hobby/Photo10.jpg" loading="lazy" decoding="async" alt="Photograph"></a>
             </div>
         </section>
     </div>
 
+    <div id="lb" class="lightbox" tabindex="-1" aria-hidden="true"><img alt="fullscreen photo"></div>
+
     <footer>&copy; Yuyang Wang</footer>
 </div>
+<script>
+    const lb = document.getElementById('lb');
+    const lbImg = lb ? lb.querySelector('img') : null;
+    if (lb && lbImg) {
+        document.addEventListener('click', (e) => {
+            const img = e.target.closest('.image.fit img');
+            if (img) {
+                lbImg.src = img.src;
+                lb.classList.add('show');
+            } else if (e.target === lb) {
+                lb.classList.remove('show');
+                lbImg.src = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lb.classList.remove('show');
+        });
+    }
+</script>
 </body>
 </html>
