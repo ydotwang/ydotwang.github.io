@@ -147,13 +147,12 @@
             width: 100%;
             height: auto;
             border-radius: 0;
-            filter: grayscale(100%) contrast(1.02);
-            transition: filter 0.5s ease, transform 0.5s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
             display: block;
         }
         .image.fit img:hover {
-            filter: grayscale(100%) contrast(1.05) brightness(1.02);
             transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
         }
 
         #main section:first-of-type .image.fit img {
